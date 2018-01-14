@@ -1,0 +1,9 @@
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Common\bin\Debug\netcoreapp2.0\RentalCars.Common.deps.json
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Common\bin\Debug\netcoreapp2.0\RentalCars.Common.dll
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Common\bin\Debug\netcoreapp2.0\RentalCars.Common.pdb
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Common\obj\Debug\netcoreapp2.0\RentalCars.Common.csprojResolveAssemblyReference.cache
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Common\obj\Debug\netcoreapp2.0\RentalCars.Common.csproj.CoreCompileInputs.cache
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Common\obj\Debug\netcoreapp2.0\RentalCars.Common.AssemblyInfoInputs.cache
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Common\obj\Debug\netcoreapp2.0\RentalCars.Common.AssemblyInfo.cs
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Common\obj\Debug\netcoreapp2.0\RentalCars.Common.dll
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Common\obj\Debug\netcoreapp2.0\RentalCars.Common.pdb

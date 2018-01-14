@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-RentalCars.Web-16A2E30A-6CD1-4C9C-A72F-E5FA4E37FA5A</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Agency\Models\CarCrudModel.cs" />
+    <Compile Remove="Models\User.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Booking\Confirm.cshtml" />
+    <Content Remove="Views\Booking\UserBooking.cshtml" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RentalCars.Common\RentalCars.Common.csproj" />
+    <ProjectReference Include="..\RentalCars.Data\RentalCars.Data.csproj" />
+    <ProjectReference Include="..\RentalCars.Services\RentalCars.Services.csproj" />
+  </ItemGroup>
+
+</Project>

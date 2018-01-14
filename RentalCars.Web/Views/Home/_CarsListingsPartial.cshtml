@@ -1,0 +1,24 @@
+﻿@model IEnumerable<CarDetailsServiceModel>
+
+<div class="row home-page">
+    @foreach (var car in Model)
+    {
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">
+                        <a asp-controller="Cars" asp-action="Details" asp-route-id="@car.Id">@car.Make @car.Model</a>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <a href="http://localhost:58291/cars/details/@car.Id">
+                        <img src="@car.ImgUrl" class="img-responsive">
+                    </a>
+                    <br />
+                    <p class="text-center">@car.Agency.Name</p>
+                    <p class="text-center">Price: <font color="green"><strong>@car.Price &#36;</strong></font></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

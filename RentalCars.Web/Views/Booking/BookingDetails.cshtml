@@ -1,0 +1,32 @@
+﻿@model BookingDetailsModel
+@{
+    ViewData["Title"] = "Booking Summary";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <img src="@Model.Car.ImgUrl" alt="..." class="img-thumbnail">
+    <div>
+        <p>@Model.Car.Make  @Model.Car.Model</p>
+    </div>
+    <div>
+        <p>@Model.User.Name</p>
+    </div>
+    <div>
+        <p>@Model.StartDate.Date.ToString("d-MMM-yyyy")</p>
+    </div>
+    <div>
+        <p>@Model.ReturnDate.Date.ToString("d MMM yyyy")</p>
+    </div>
+    <div>
+        <h2>Final Price: @Model.Price &#36;</h2>
+    </div>
+    <div>
+        <a class="btn btn-default" asp-area="" asp-controller="Users" asp-action="BookingHistory">Back</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

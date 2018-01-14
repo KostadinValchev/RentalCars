@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CarDetailsServiceModel>
+@{
+    ViewData["Title"] = "All Agency cars";
+}
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <a class="btn btn-default" asp-area="Agency" asp-controller="Cars" asp-action="All">Back</a>
+    </div>
+</div>
+<br />
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                Car мake
+            </th>
+            <th>
+                Car мodel
+            </th>
+            <th>
+                Return date
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <th>
+                    <img src="@car.ImgUrl" alt="..." class="img-thumbnailDesctop">
+                </th>
+                <th>
+                    @car.Make
+                </th>
+                <th>
+                    @car.Model
+                </th>
+                <th>
+                    @car.ReturnDate.ToString("d-MMM-yyyy")
+                </th>
+                <th>
+                    @car.Price
+                </th>
+                <th>
+                    @car.Category
+                </th>
+                <th>
+                    <form method="post" asp-action="PublishAgain">
+                        <input hidden name="id" value="@car.Id" />
+                        <button type="submit" class="btn btn-success">Publish again</button>
+                    </form>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

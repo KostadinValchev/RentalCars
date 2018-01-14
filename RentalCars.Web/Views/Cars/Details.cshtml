@@ -1,0 +1,60 @@
+﻿@model CarDetailsServiceModel
+
+
+<div class="row">
+    <div class="col-md-9">
+        <h1>@Model.Agency.Name</h1>
+    </div>
+    <img src="@Model.ImgUrl" alt="..." class="img-thumbnail">
+    <div>
+        <h3>Price per day: @Model.Price</h3>
+    </div>
+    <div>
+        <h4>City: @Model.City.Name</h4>
+    </div>
+    <p>
+        <span class="glyphicon glyphicon-list-alt"></span> Make: @Model.Make
+    </p>
+    <p>
+        <span class="glyphicon glyphicon-list-alt"></span> Model: @Model.Model
+    </p>
+    <p>
+        <span class="glyphicon glyphicon-list-alt"></span> Category: @Model.Category
+    </p>
+    <p>
+        <span class="glyphicon glyphicon-list-alt"></span> Fuel type: @Model.FuelType
+    </p>
+    <p>
+        <span class="glyphicon glyphicon-list-alt"></span> Air Conditioner: @(Model.AirConditioner ? "Yes" : "No")
+    </p>
+    <p>
+        <span class="glyphicon glyphicon-list-alt"></span> Navigation: @(Model.Navigation ? "Yes" : "No")
+    </p>
+    <p>
+        <span class="glyphicon glyphicon-list-alt"></span> Abs: @(Model.Abs ? "Yes" : "No")
+    </p>
+    <p>
+        <span class="glyphicon glyphicon-list-alt"></span> Asp: @(Model.Asp ? "Yes" : "No")
+    </p>
+    <p>
+        <span class="glyphicon glyphicon-list-alt"></span> Mp3 Player: @(Model.Mp3Player ? "Yes" : "No")
+    </p>
+</div>
+@if (User.IsInRole(WebConstants.AgencyRole))
+{
+    <a class="btn btn-default" asp-area="Agency" asp-controller="Cars" asp-action="All">Back</a>
+}
+@if (!User.IsInRole(WebConstants.AgencyRole))
+{
+    <form method="post">
+        <div>
+            <a asp-controller="Booking" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Book Now</a>
+        </div>
+    </form>
+}
+
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

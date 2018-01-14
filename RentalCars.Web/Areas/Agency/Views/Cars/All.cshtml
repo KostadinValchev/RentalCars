@@ -1,0 +1,72 @@
+﻿@model IEnumerable<CarDetailsServiceModel>
+@{
+    ViewData["Title"] = "All Agency cars";
+}
+<h2>@ViewData["Title"]</h2>
+
+@*<a class="btn btn-success" asp-area="Agency" asp-controller="Cars" asp-action="Create">Add car</a>
+    <br />
+    <br />*@
+
+<div class="row">
+    <div class="col-md-6">
+        <a class="btn btn-success" asp-area="Agency" asp-controller="Cars" asp-action="Create">Add car</a>
+        <a class="btn btn-primary" asp-area="Agency" asp-controller="Cars" asp-action="AllReturnedCars">Returned cars</a>
+    </div>
+</div>
+<br />
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                Car Make
+            </th>
+            <th>
+                Car Model
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Available
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <th>
+                    <img src="@car.ImgUrl" alt="..." class="img-thumbnailDesctop">
+                </th>
+                <th>
+                    @car.Make
+                </th>
+                <th>
+                    @car.Model
+                </th>
+                <th>
+                    @car.Price
+                </th>
+                <th>
+                    @car.Category
+                </th>
+                <th>
+                    @(car.IsReserved ? "No" : "Yes")
+                </th>
+                <th>
+                    <a class="btn btn-info" asp-area="" asp-controller="Cars" asp-action="Details" asp-route-id="@car.Id">Details</a>
+                    <a class="btn btn-warning" asp-area="Agency" asp-controller="Cars" asp-action="Edit" asp-route-id="@car.Id">Edit</a>
+                    <a class="btn btn-danger" asp-area="Agency" asp-controller="Cars" asp-action="Delete" asp-route-id="@car.Id">Delete</a>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

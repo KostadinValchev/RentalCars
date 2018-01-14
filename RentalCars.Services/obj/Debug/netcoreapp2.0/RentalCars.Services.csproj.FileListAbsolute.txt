@@ -1,0 +1,15 @@
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\bin\Debug\netcoreapp2.0\RentalCars.Services.deps.json
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\bin\Debug\netcoreapp2.0\RentalCars.Services.dll
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\bin\Debug\netcoreapp2.0\RentalCars.Services.pdb
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\bin\Debug\netcoreapp2.0\RentalCars.Common.dll
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\bin\Debug\netcoreapp2.0\RentalCars.Data.dll
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\bin\Debug\netcoreapp2.0\RentalCars.Common.pdb
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\bin\Debug\netcoreapp2.0\RentalCars.Data.pdb
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.xml
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\obj\Debug\netcoreapp2.0\RentalCars.Services.csprojResolveAssemblyReference.cache
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\obj\Debug\netcoreapp2.0\RentalCars.Services.csproj.CoreCompileInputs.cache
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\obj\Debug\netcoreapp2.0\RentalCars.Services.AssemblyInfoInputs.cache
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\obj\Debug\netcoreapp2.0\RentalCars.Services.AssemblyInfo.cs
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\obj\Debug\netcoreapp2.0\RentalCars.Services.dll
+C:\Users\Koceto\source\repos\RentalCars\RentalCars.Services\obj\Debug\netcoreapp2.0\RentalCars.Services.pdb

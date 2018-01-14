@@ -1,0 +1,64 @@
+﻿@model UserHistoryServiceModel
+
+@{
+    ViewData["Title"] = "Booking History";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                Agency
+            </th>
+            <th>
+                Car 
+            </th>
+            <th>
+                Start Date
+            </th>
+            <th>
+                Return Date
+            </th>
+            <th>
+                Finall Price
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+           @foreach (var order in Model.Orders)
+           {
+            <tr>
+                <th>
+                    <img src="@order.Car.ImgUrl" alt="..." class="img-thumbnailDesctop">
+                </th>
+                <th>
+                    
+                </th>
+                <th>
+                    @order.Car.Make @order.Car.Model
+                </th>
+                <th>
+                    @order.StartDate.Date.ToString("d-MMM-yyyy")
+                </th>
+                <th>
+                    @order.ReturnDate.Date.ToString("d-MMM-yyyy")
+                </th>
+                <th>
+                    @order.Price
+                </th>
+                <th>
+                    <a class="btn btn-info" asp-area="" asp-controller="Booking" asp-action="BookingDetails" asp-route-id="@order.Id" a>Details</a>
+                </th>
+            </tr>
+           }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,77 @@
+﻿@model CarCrudModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<h2>@ViewData["Title"]</h2>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Make"></label>
+                <input asp-for="Make" class="form-control" />
+                <span asp-validation-for="Make" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category"></label>
+                <select required asp-for="Category" class="form-control">
+                    <option value="1" selected>Economy</option>
+                    <option value="2">Saloon</option>
+                    <option value="3">Estate</option>
+                    <option value="4">Van</option>
+                    <option value="5">Limousine</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cities"></label>
+                <select asp-for="CitiesId" asp-items="Model.Cities" class="form-control"></select>
+                <span asp-validation-for="Cities" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price">Price Per Day</label>
+                <input asp-for="Price" type="number" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FuelType"></label>
+                <select required asp-for="FuelType" class="form-control">
+                    <option value="1" selected>Petrol</option>
+                    <option value="2">Diesel</option>
+                    <option value="3">Electric</option>
+                </select>
+                <span asp-validation-for="FuelType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirConditioner"></label>
+                <input asp-for="AirConditioner" value="true" type="checkbox" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Navigation"></label>
+                <input asp-for="Navigation" type="checkbox" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Abs"></label>
+                <input asp-for="Abs" type="checkbox" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Asp"></label>
+                <input asp-for="Asp" type="checkbox" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Mp3Player"></label>
+                <input asp-for="Mp3Player" type="checkbox" />
+            </div>
+            <button type="submit" class="btn btn-warning">Complete Edit</button>
+            <a class="btn btn-default" asp-area="Agency" asp-controller="Cars" asp-action="All">Back</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
