@@ -1,5 +1,6 @@
 ﻿namespace RentalCars.Web.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using RentalCars.Data.Models;
@@ -28,6 +29,7 @@
             this.cars = cars;
         }
 
+        [Authorize]
         public IActionResult Create(int id)
        => this.View(new BookingViewModel
        {
@@ -36,6 +38,7 @@
            ReturnDate = DateTime.UtcNow.AddDays(1)
        });
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(BookingViewModel model)
         {
@@ -65,6 +68,7 @@
                 new { area = string.Empty });
         }
 
+        [Authorize]
         public async Task<IActionResult> BookingDetails(int id)
         {
             var bookingModel = await this.booking.Details<BookingDetailsModel>(id);
@@ -72,6 +76,7 @@
             return View(bookingModel);
         }
 
+        [Authorize]
         public async Task<IActionResult> UserLastBooking()
         {
             var userId = this.userManager.GetUserId(User);

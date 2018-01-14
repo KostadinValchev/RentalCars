@@ -3426,11 +3426,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Koceto\\source\\repos\\RentalCars\\RentalCars.Common\\RentalCars.Common.csproj",
+      "projectUniqueName": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Common\\RentalCars.Common.csproj",
       "projectName": "RentalCars.Common",
-      "projectPath": "C:\\Users\\Koceto\\source\\repos\\RentalCars\\RentalCars.Common\\RentalCars.Common.csproj",
+      "projectPath": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Common\\RentalCars.Common.csproj",
       "packagesPath": "C:\\Users\\Koceto\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Koceto\\source\\repos\\RentalCars\\RentalCars.Common\\obj\\",
+      "outputPath": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
