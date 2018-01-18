@@ -1,9 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
-
-namespace RentalCars.Data.Migrations
+﻿namespace RentalCars.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class SetRelationBetweenCityAndCar : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

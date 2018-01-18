@@ -5,7 +5,6 @@
     using Microsoft.AspNetCore.Mvc;
     using RentalCars.Data.Models;
     using RentalCars.Services;
-    using RentalCars.Services.Agency;
     using RentalCars.Services.Models.Booking;
     using RentalCars.Web.Models;
     using System;
@@ -59,8 +58,6 @@
                  model.ReturnDate,
                  userId,
                  model.CarId);
-
-           
 
             return RedirectToAction(
                 nameof(BookingController.UserLastBooking),

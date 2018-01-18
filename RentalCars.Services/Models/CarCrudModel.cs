@@ -8,7 +8,6 @@
 
     public class CarCrudModel
     {
-
         public int Id { get; set; }
 
         [Required]

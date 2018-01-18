@@ -1,7 +1,14 @@
-﻿@model IEnumerable<CarDetailsServiceModel>
+﻿@model AllCarsAgencyViewModel
+
 @{
     ViewData["Title"] = "All Agency cars";
 }
+
+@{
+    string previousDisabled = Model.CurrentPage == 1 ? "disabled" : string.Empty;
+    string nextDisabled = Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty;
+}
+
 <h2>@ViewData["Title"]</h2>
 
 <div class="row">
@@ -10,6 +17,24 @@
     </div>
 </div>
 <br />
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @previousDisabled">
+            <a class="page-link"
+               asp-area="Agency"
+               asp-controller="Cars"
+               asp-action="AllReturnedCars"
+               asp-route-page="@Model.PreviousPage"
+               tabindex="-1">Previous</a>
+        </li>
+
+        <li class="page-item @nextDisabled">
+            <a class="page-link" asp-area="Agency" asp-controller="Cars" asp-action="AllReturnedCars" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
+        </li>
+    </ul>
+</nav>
+
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -37,7 +62,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var car in Model)
+        @foreach (var car in Model.Cars)
         {
             <tr>
                 <th>
@@ -53,7 +78,7 @@
                     @car.ReturnDate.ToString("d-MMM-yyyy")
                 </th>
                 <th>
-                    @car.Price
+                    @car.Price &#36;
                 </th>
                 <th>
                     @car.Category
@@ -68,3 +93,20 @@
         }
     </tbody>
 </table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @previousDisabled">
+            <a class="page-link"
+               asp-area="Agency"
+               asp-controller="Cars"
+               asp-action="All"
+               asp-route-page="@Model.PreviousPage"
+               tabindex="-1">Previous</a>
+        </li>
+
+        <li class="page-item @nextDisabled">
+            <a class="page-link" asp-area="Agency" asp-controller="Cars" asp-action="All" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
+        </li>
+    </ul>
+</nav>

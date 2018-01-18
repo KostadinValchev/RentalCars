@@ -13258,11 +13258,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Web\\RentalCars.Web.csproj",
+      "projectUniqueName": "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Web\\RentalCars.Web.csproj",
       "projectName": "RentalCars.Web",
-      "projectPath": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Web\\RentalCars.Web.csproj",
+      "projectPath": "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Web\\RentalCars.Web.csproj",
       "packagesPath": "C:\\Users\\Koceto\\.nuget\\packages\\",
-      "outputPath": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Web\\obj\\",
+      "outputPath": "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13281,14 +13281,14 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Data\\RentalCars.Data.csproj": {
-              "projectPath": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Data\\RentalCars.Data.csproj"
+            "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Data\\RentalCars.Data.csproj": {
+              "projectPath": "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Data\\RentalCars.Data.csproj"
             },
-            "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Services\\RentalCars.Services.csproj": {
-              "projectPath": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Services\\RentalCars.Services.csproj"
+            "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Services\\RentalCars.Services.csproj": {
+              "projectPath": "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Services\\RentalCars.Services.csproj"
             },
-            "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Common\\RentalCars.Common.csproj": {
-              "projectPath": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Common\\RentalCars.Common.csproj"
+            "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Common\\RentalCars.Common.csproj": {
+              "projectPath": "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Common\\RentalCars.Common.csproj"
             }
           }
         }

@@ -24,7 +24,6 @@
         private const string CarEditMessage = "Successfully edit!";
         private const string CarPublishAgainMessage = "Successfully published your car!";
 
-
         private readonly IAgencyService agencies;
         private readonly IAgencyCarService cars;
         private readonly UserManager<User> userManager;
@@ -38,22 +37,33 @@
             this.agencies = agencies;
         }
 
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All(int page = 1)
         {
             var userId = userManager.GetUserId(User);
             var agencyName = await this.agencies.FindAgencyNameAsync(userId);
-            var cars = await this.cars.AllCarsAsync(agencyName);
+            var cars = await this.cars.AllCarsAsync(agencyName, page);
 
-            return this.View(cars);
+
+            return this.View(new AllCarsAgencyViewModel
+            {
+                Cars = cars,
+                TotalCars = await this.cars.TotalAsync(),
+                CurrentPage = page
+            });
         }
 
-        public async Task<IActionResult> AllReturnedCars()
+        public async Task<IActionResult> AllReturnedCars(int page = 1)
         {
             var userId = userManager.GetUserId(User);
             var agencyName = await this.agencies.FindAgencyNameAsync(userId);
-            var cars = await this.cars.AllReturnedCarsAsync(agencyName);
+            var cars = await this.cars.AllReturnedCarsAsync(agencyName, page);
 
-            return this.View(cars);
+            return this.View(new AllCarsAgencyViewModel
+            {
+                Cars = cars,
+                TotalCars = await this.cars.TotalAsync(),
+                CurrentPage = page
+            });
         }
 
         public async Task<IActionResult> Create()

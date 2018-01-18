@@ -15,10 +15,13 @@
                         <img src="@car.ImgUrl" class="img-responsive">
                     </a>
                     <br />
-                    <p class="text-center">@car.Agency.Name</p>
-                    <p class="text-center">Price: <font color="green"><strong>@car.Price &#36;</strong></font></p>
+                    <p class="text-center">@car.Agency.Name - Price: <font color="green"><strong>@car.Price &#36;</strong></font></p>
+                    <div class="text-center">
+                        <p><a href="http://localhost:58291/cars/details/@car.Id" class="btn btn-primary btn-sm">More Details &raquo;</a></p>
+                    </div>
                 </div>
             </div>
         </div>
     }
 </div>
+

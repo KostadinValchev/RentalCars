@@ -4,8 +4,16 @@
     ViewData["Title"] = "Car For Rent";
 }
 
-<div class="jumbotron home-jumbotron">
-    <h1 class="text-center">Please chouse car for rent!</h1>
+@{ 
+    string previousDisabled = Model.CurrentPage == 1 ? "disabled" : string.Empty;
+    string nextDisabled = Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty;
+}
+
+<div class="jumbotron" style="background-image: url(https://www.rentawreck.com/media/72_convertible-car.jpg); background-size: 100% 100%;">
+    <h1 class="text-jumbotron">Welcome</h1>
+   <br />
+    <br />
+    <h2 class="text-jumbotron">Find the right car for you!</h2>
 </div>
 
 <div class="row">
@@ -26,5 +34,38 @@
 <br />
 
 <div class="row home-page">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @previousDisabled">
+                <a class="page-link"
+                   asp-controller="Home"
+                   asp-action="Index"
+                   asp-route-page="@Model.PreviousPage"
+                   tabindex="-1">Previous</a>
+            </li>
+
+            <li class="page-item @nextDisabled">
+                <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
+            </li>
+        </ul>
+    </nav>
+
     @await Html.PartialAsync("_CarsListingsPartial", Model.Cars.Where(c => c.IsReserved == false))
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @previousDisabled" >
+                <a 
+                   class="page-link" 
+                   asp-controller="Home" 
+                   asp-action="Index" 
+                   asp-route-page="@Model.PreviousPage" 
+                   tabindex="-1">Previous</a>
+            </li>
+
+            <li class="page-item @nextDisabled">
+                <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>

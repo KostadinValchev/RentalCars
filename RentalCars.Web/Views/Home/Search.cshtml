@@ -11,7 +11,7 @@
     <h3>Found Cars</h3>
 
     <div class="row course-listings">
-        @await Html.PartialAsync("_CarsListingsPartial", Model.Cars)
+        @await Html.PartialAsync("_CarsListingsPartial", Model.Cars.Where(c => c.IsReserved == false))
     </div>
 }
 else

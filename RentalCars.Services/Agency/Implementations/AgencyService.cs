@@ -3,7 +3,6 @@
     using Microsoft.EntityFrameworkCore;
     using RentalCars.Data;
     using RentalCars.Data.Models;
-    using System.Linq;
     using System.Threading.Tasks;
 
     public class AgencyService : IAgencyService

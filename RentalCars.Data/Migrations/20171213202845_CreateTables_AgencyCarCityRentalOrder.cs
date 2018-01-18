@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
-
-namespace RentalCars.Data.Migrations
+﻿namespace RentalCars.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Metadata;
+    using Microsoft.EntityFrameworkCore.Migrations;
+    using System;
+
     public partial class CreateTables_AgencyCarCityRentalOrder : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

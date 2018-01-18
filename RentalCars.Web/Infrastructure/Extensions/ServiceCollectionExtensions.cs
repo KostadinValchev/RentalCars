@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using RentalCars.Services;
-using System.Linq;
-using System.Reflection;
-
-namespace RentalCars.Web.Infrastructure.Extensions
+﻿namespace RentalCars.Web.Infrastructure.Extensions
 {
+    using Microsoft.Extensions.DependencyInjection;
+    using RentalCars.Services;
+    using System.Linq;
+    using System.Reflection;
+
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddDomainServices(

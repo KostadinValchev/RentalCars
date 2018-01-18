@@ -8,8 +8,10 @@
     {
         Task<TModel> ByIdAsync<TModel>(int id) where TModel : class;
 
-        Task<IEnumerable<CarDetailsServiceModel>> AllAsync();
+        Task<IEnumerable<CarDetailsServiceModel>> AllAsync(int page = 1);
 
-        Task<IEnumerable<CarDetailsServiceModel>> FindAsync(string searchText);
+        Task<IEnumerable<CarDetailsServiceModel>> FindCarByCityAsync(string searchText);
+
+        Task<int> TotalAsync();
     }
 }

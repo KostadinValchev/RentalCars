@@ -39,12 +39,14 @@
 
         Task<IEnumerable<CitiesModel>> GetCitiesAsync();
 
-        Task<IEnumerable<CarDetailsServiceModel>> AllCarsAsync(string agencyName);
+        Task<IEnumerable<CarDetailsServiceModel>> AllCarsAsync(string agencyName, int page = 1);
 
-        Task<IEnumerable<CarDetailsServiceModel>> AllReturnedCarsAsync(string agencyName);
+        Task<IEnumerable<CarDetailsServiceModel>> AllReturnedCarsAsync(string agencyName, int page = 1);
 
         Task<bool> PublishAgain(int id);
 
         Task<CarCrudModel> FindByIdAsync(int id);
+
+        Task<int> TotalAsync();
     }
 }

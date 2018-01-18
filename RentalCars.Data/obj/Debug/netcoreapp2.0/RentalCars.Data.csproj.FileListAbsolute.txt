@@ -16,3 +16,12 @@ E:\Desktop\Test RentalCars\RentalCars\RentalCars.Data\obj\Debug\netcoreapp2.0\Re
 E:\Desktop\Test RentalCars\RentalCars\RentalCars.Data\obj\Debug\netcoreapp2.0\RentalCars.Data.AssemblyInfo.cs
 E:\Desktop\Test RentalCars\RentalCars\RentalCars.Data\obj\Debug\netcoreapp2.0\RentalCars.Data.dll
 E:\Desktop\Test RentalCars\RentalCars\RentalCars.Data\obj\Debug\netcoreapp2.0\RentalCars.Data.pdb
+E:\Desktop\RentalCars\RentalCars\RentalCars.Data\bin\Debug\netcoreapp2.0\RentalCars.Data.deps.json
+E:\Desktop\RentalCars\RentalCars\RentalCars.Data\bin\Debug\netcoreapp2.0\RentalCars.Data.dll
+E:\Desktop\RentalCars\RentalCars\RentalCars.Data\bin\Debug\netcoreapp2.0\RentalCars.Data.pdb
+E:\Desktop\RentalCars\RentalCars\RentalCars.Data\obj\Debug\netcoreapp2.0\RentalCars.Data.csprojResolveAssemblyReference.cache
+E:\Desktop\RentalCars\RentalCars\RentalCars.Data\obj\Debug\netcoreapp2.0\RentalCars.Data.csproj.CoreCompileInputs.cache
+E:\Desktop\RentalCars\RentalCars\RentalCars.Data\obj\Debug\netcoreapp2.0\RentalCars.Data.AssemblyInfoInputs.cache
+E:\Desktop\RentalCars\RentalCars\RentalCars.Data\obj\Debug\netcoreapp2.0\RentalCars.Data.AssemblyInfo.cs
+E:\Desktop\RentalCars\RentalCars\RentalCars.Data\obj\Debug\netcoreapp2.0\RentalCars.Data.dll
+E:\Desktop\RentalCars\RentalCars\RentalCars.Data\obj\Debug\netcoreapp2.0\RentalCars.Data.pdb

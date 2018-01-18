@@ -9,6 +9,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using static ServiceConstants;
 
     public class AgencyCarService : IAgencyCarService
     {
@@ -19,14 +20,17 @@
             this.db = db;
         }
 
-        public async Task<IEnumerable<CarDetailsServiceModel>> AllCarsAsync(string agencyName)
+        public async Task<IEnumerable<CarDetailsServiceModel>> AllCarsAsync(string agencyName, int page = 1)
         => await this.db
             .Cars
             .Where(c => c.Agency.Name == agencyName)
+            .OrderBy(c => c.Price)
+            .Skip((page - 1) * CarsAgencyPageSize)
+            .Take(CarsAgencyPageSize)
             .ProjectTo<CarDetailsServiceModel>()
             .ToListAsync();
 
-        public async Task<IEnumerable<CarDetailsServiceModel>> AllReturnedCarsAsync(string agencyName)
+        public async Task<IEnumerable<CarDetailsServiceModel>> AllReturnedCarsAsync(string agencyName, int page = 1)
         => await this.db
                 .Cars
                 .Where(c =>
@@ -34,9 +38,10 @@
                 && c.ReturnDate < DateTime.UtcNow
                 && c.IsReserved == true)
                 .OrderBy(c => c.Id)
+                .Skip((page - 1) * CarsAgencyPageSize)
+                .Take(CarsAgencyPageSize)
                 .ProjectTo<CarDetailsServiceModel>()
                 .ToListAsync();
-
 
         public async Task CreateAsync(string make,
             string model,
@@ -67,7 +72,6 @@
                 AgencyId = agencyId,
                 CityId = cityId,
                 ImgUrl = img,
-
             };
 
             this.db.Cars.Add(car);
@@ -136,6 +140,9 @@
             var cities = await this.db.Cities.ProjectTo<CitiesModel>().ToListAsync();
             return cities;
         }
+
+        public async Task<int> TotalAsync()
+       => await this.db.Cars.CountAsync();
 
         public async Task<bool> PublishAgain(int id)
         {

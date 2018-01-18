@@ -26,12 +26,25 @@
     margin: 15px;
 }
 
+.jumbotron {
+    height: 300px;
+    margin-top: 30px;
+}
+
 .home-jumbotron {
-    margin-top: 50px
+    margin-top: 50px;
+}
+
+.text-jumbotron {
+    background-color: antiquewhite;
+    color: #000000;
+    display: inline;
+    padding: 0.5rem;
+    /*box-decoration-break: clone;*/
 }
 
 .home-page .img-responsive {
-    height:200px !important
+    height: 250px !important
 }
 
 .img-thumbnail {
@@ -43,7 +56,7 @@
     width: 250px;
 }
 
-.pricecolor{
+.pricecolor {
     color: green;
 }
 /* Hide/rearrange for smaller screens */
@@ -53,4 +66,3 @@
         display: none;
     }
 }
-

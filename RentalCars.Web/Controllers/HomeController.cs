@@ -25,15 +25,17 @@
 
             if (model.SearchInCity)
             {
-                viewModel.Cars = await this.cars.FindAsync(model.SearchText);
+                viewModel.Cars = await this.cars.FindCarByCityAsync(model.SearchText);
             }
 
             return View(viewModel);
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         => View(new HomeIndexViewModel
         {
-            Cars =await this.cars.AllAsync()
+            Cars = await this.cars.AllAsync(page),
+            TotalCars = await this.cars.TotalAsync(),
+            CurrentPage = page
         });
 
         public IActionResult Error()

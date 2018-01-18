@@ -14,7 +14,7 @@
         public string Name { get; set; }
 
         public DateTime? Birthdate { get; set; }
-        
+
         public Agency Agency { get; set; }
 
         public List<RentalOrder> Orders { get; set; } = new List<RentalOrder>();

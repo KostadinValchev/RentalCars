@@ -11,8 +11,10 @@
 
         Task<TModel> Details<TModel>(int id) where TModel : class;
 
-        Task<IEnumerable<BookingDetailsModel>> FindAllBookings<TModel>(string id) where TModel : class;
+        Task<IEnumerable<BookingDetailsModel>> FindAllBookings<TModel>(string id, int page = 1) where TModel : class;
 
         Task<TModel> FindLastBooking<TModel>(string id) where TModel : class;
+
+        Task<int> TotalBookingAsync(string id);
     }
 }

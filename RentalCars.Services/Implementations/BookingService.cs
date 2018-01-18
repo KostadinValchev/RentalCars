@@ -9,6 +9,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using static ServiceConstants;
 
     public class BookingService : IBookingService
     {
@@ -20,28 +21,31 @@
         }
         public async Task CreateAsync(DateTime startDate, DateTime returnDate, string userId, int carId)
         {
+            var user = await this.db.Users.SingleOrDefaultAsync(u => u.Id == userId);
+            var car = await this.db.Cars.SingleOrDefaultAsync(c => c.Id == carId);
 
             TimeSpan bookingDays = (returnDate - startDate);
 
-            var rentOrder = new RentalOrder()
+            if (user != null && car != null)
             {
-                StartDate = startDate,
-                ReturnDate = returnDate,
-                UserId = userId,
-                CarId = carId,
-                RentDays = bookingDays.Days
-            };
+                var rentOrder = new RentalOrder()
+                {
+                    StartDate = startDate,
+                    ReturnDate = returnDate,
+                    User = user,
+                    Car = car,
+                    RentDays = bookingDays.Days
+                };
 
+                car.IsReserved = true;
+                car.ReturnDate = returnDate;
+                car.BookingCount++;
+                rentOrder.Price = car.Price * rentOrder.RentDays;
 
-            var car = this.db.Cars.Find(carId);
-            car.IsReserved = true;
-            car.ReturnDate = returnDate;
-            car.BookingCount++;
-            rentOrder.Price = car.Price * rentOrder.RentDays;
-
-            this.db.RentalOrders.Add(rentOrder);
-            this.db.Cars.Update(car);
-            await this.db.SaveChangesAsync();
+                this.db.RentalOrders.Add(rentOrder);
+                this.db.Cars.Update(car);
+                await this.db.SaveChangesAsync();
+            }
         }
 
         public async Task<TModel> Details<TModel>(int id) where TModel : class
@@ -50,10 +54,12 @@
           .ProjectTo<TModel>()
           .FirstOrDefaultAsync();
 
-        public async Task<IEnumerable<BookingDetailsModel>> FindAllBookings<TModel>(string id) where TModel : class
+        public async Task<IEnumerable<BookingDetailsModel>> FindAllBookings<TModel>(string id, int page = 1) where TModel : class
             => await this.db.RentalOrders
             .Where(u => u.UserId == id)
             .OrderBy(o => o.Id)
+            .Skip((page - 1) * OrdersUserHistoryPageSize)
+            .Take(OrdersUserHistoryPageSize)
             .ProjectTo<BookingDetailsModel>()
             .ToListAsync();
 
@@ -64,6 +70,7 @@
             .ProjectTo<TModel>()
             .FirstOrDefaultAsync();
 
-
+        public Task<int> TotalBookingAsync(string id)
+        => this.db.RentalOrders.Where(u => u.UserId == id).CountAsync();
     }
 }

@@ -7,10 +7,10 @@
     </div>
     <img src="@Model.ImgUrl" alt="..." class="img-thumbnail">
     <div>
-        <h3>Price per day: @Model.Price</h3>
+        <h3>Price per day: @Model.Price &#36;</h3>
     </div>
     <div>
-        <h4>City: @Model.City.Name</h4>
+        <h4 class="glyphicon glyphicon-globe"> City: @Model.City.Name</h4>
     </div>
     <p>
         <span class="glyphicon glyphicon-list-alt"></span> Make: @Model.Make
@@ -19,27 +19,28 @@
         <span class="glyphicon glyphicon-list-alt"></span> Model: @Model.Model
     </p>
     <p>
-        <span class="glyphicon glyphicon-list-alt"></span> Category: @Model.Category
+        <span class="glyphicon glyphicon-wrench"></span> Category: @Model.Category
     </p>
     <p>
-        <span class="glyphicon glyphicon-list-alt"></span> Fuel type: @Model.FuelType
+        <span class="glyphicon glyphicon-tint"></span> Fuel type: @Model.FuelType
     </p>
     <p>
-        <span class="glyphicon glyphicon-list-alt"></span> Air Conditioner: @(Model.AirConditioner ? "Yes" : "No")
+        <span class="glyphicon glyphicon-asterisk"></span> Air Conditioner: @(Model.AirConditioner ? "Yes" : "No")
     </p>
     <p>
-        <span class="glyphicon glyphicon-list-alt"></span> Navigation: @(Model.Navigation ? "Yes" : "No")
+        <span class="glyphicon glyphicon-send"></span> Navigation: @(Model.Navigation ? "Yes" : "No")
     </p>
     <p>
-        <span class="glyphicon glyphicon-list-alt"></span> Abs: @(Model.Abs ? "Yes" : "No")
+        <span class="glyphicon glyphicon-cog"></span> Abs: @(Model.Abs ? "Yes" : "No")
     </p>
     <p>
-        <span class="glyphicon glyphicon-list-alt"></span> Asp: @(Model.Asp ? "Yes" : "No")
+        <span class="glyphicon glyphicon-cog"></span> Asp: @(Model.Asp ? "Yes" : "No")
     </p>
     <p>
-        <span class="glyphicon glyphicon-list-alt"></span> Mp3 Player: @(Model.Mp3Player ? "Yes" : "No")
+        <span class="glyphicon glyphicon glyphicon-music"></span> Mp3 Player: @(Model.Mp3Player ? "Yes" : "No")
     </p>
 </div>
+
 @if (User.IsInRole(WebConstants.AgencyRole))
 {
     <a class="btn btn-default" asp-area="Agency" asp-controller="Cars" asp-action="All">Back</a>
@@ -52,8 +53,6 @@
         </div>
     </form>
 }
-
-
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")

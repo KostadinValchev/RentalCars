@@ -14,29 +14,27 @@
         private readonly UserManager<User> userManager;
         private readonly IUserService users;
         private readonly IBookingService bookings;
-        private readonly IAgencyService agencies;
-
 
         public UsersController(
             UserManager<User> userManager,
             IUserService users,
-            IBookingService bookings,
-            IAgencyService agencies)
+            IBookingService bookings)
         {
             this.userManager = userManager;
             this.users = users;
             this.bookings = bookings;
-            this.agencies = agencies;
         }
 
-        public async Task<IActionResult> BookingHistory()
+        public async Task<IActionResult> BookingHistory(int page = 1)
         {
             var userId = userManager.GetUserId(User);
 
-            var user = await this.users.ByIdAsync<UserHistoryServiceModel>(userId);
-            user.Orders = await this.bookings.FindAllBookings<BookingDetailsModel>(userId);
+            var userHistory = await this.users.ByIdAsync<UserHistoryServiceModel>(userId);
+            userHistory.Orders = await this.bookings.FindAllBookings<BookingDetailsModel>(userId, page);
+            userHistory.TotalOrders = await this.bookings.TotalBookingAsync(userId);
+            userHistory.CurrentPage = page;
 
-            return View(user);
+            return View(userHistory);
         }
     }
 }

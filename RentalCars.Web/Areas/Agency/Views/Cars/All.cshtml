@@ -1,12 +1,15 @@
-﻿@model IEnumerable<CarDetailsServiceModel>
+﻿@model AllCarsAgencyViewModel
+
 @{
     ViewData["Title"] = "All Agency cars";
 }
-<h2>@ViewData["Title"]</h2>
 
-@*<a class="btn btn-success" asp-area="Agency" asp-controller="Cars" asp-action="Create">Add car</a>
-    <br />
-    <br />*@
+@{
+    string previousDisabled = Model.CurrentPage == 1 ? "disabled" : string.Empty;
+    string nextDisabled = Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty;
+}
+
+<h2>@ViewData["Title"]</h2>
 
 <div class="row">
     <div class="col-md-6">
@@ -15,6 +18,24 @@
     </div>
 </div>
 <br />
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @previousDisabled">
+            <a class="page-link"
+               asp-area="Agency"
+               asp-controller="Cars"
+               asp-action="All"
+               asp-route-page="@Model.PreviousPage"
+               tabindex="-1">Previous</a>
+        </li>
+
+        <li class="page-item @nextDisabled">
+            <a class="page-link" asp-area="Agency" asp-controller="Cars" asp-action="All" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
+        </li>
+    </ul>
+</nav>
+
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -40,11 +61,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var car in Model)
-        {
+        @foreach (var car in Model.Cars)
+            {
             <tr>
                 <th>
-                    <img src="@car.ImgUrl" alt="..." class="img-thumbnailDesctop">
+                    <a href="http://localhost:58291/cars/details/@car.Id">
+                        <img src="@car.ImgUrl" alt="..." class="img-thumbnailDesctop">
+                    </a>
                 </th>
                 <th>
                     @car.Make
@@ -53,7 +76,7 @@
                     @car.Model
                 </th>
                 <th>
-                    @car.Price
+                    @car.Price &#36;
                 </th>
                 <th>
                     @car.Category
@@ -70,3 +93,22 @@
         }
     </tbody>
 </table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @previousDisabled">
+            <a class="page-link"
+               asp-area="Agency"
+               asp-controller="Cars"
+               asp-action="All"
+               asp-route-page="@Model.PreviousPage"
+               tabindex="-1">Previous</a>
+        </li>
+
+        <li class="page-item @nextDisabled">
+            <a class="page-link" asp-area="Agency" asp-controller="Cars" asp-action="All" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
+        </li>
+    </ul>
+</nav>
+
+

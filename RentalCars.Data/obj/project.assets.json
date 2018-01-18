@@ -4013,11 +4013,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Data\\RentalCars.Data.csproj",
+      "projectUniqueName": "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Data\\RentalCars.Data.csproj",
       "projectName": "RentalCars.Data",
-      "projectPath": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Data\\RentalCars.Data.csproj",
+      "projectPath": "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Data\\RentalCars.Data.csproj",
       "packagesPath": "C:\\Users\\Koceto\\.nuget\\packages\\",
-      "outputPath": "E:\\Desktop\\Test RentalCars\\RentalCars\\RentalCars.Data\\obj\\",
+      "outputPath": "E:\\Desktop\\RentalCars\\RentalCars\\RentalCars.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
