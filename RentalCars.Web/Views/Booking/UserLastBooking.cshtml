@@ -1,4 +1,5 @@
 ﻿@model BookingDetailsModel
+
 @{
     ViewData["Title"] = "Booking Summary";
 }
@@ -10,15 +11,19 @@
 <div class="row">
     <img src="@Model.Car.ImgUrl" alt="..." class="img-thumbnail">
     <div>
+        <p>Car model</p>
         <p>@Model.Car.Make  @Model.Car.Model</p>
     </div>
     <div>
+        <p>User name</p>
         <p>@Model.User.Name</p>
     </div>
     <div>
+        <p>Start date</p>
         <p>@Model.StartDate.Date.ToString("d-MMM-yyyy")</p>
     </div>
     <div>
+        <p>Return date</p>
         <p>@Model.ReturnDate.Date.ToString("d MMM yyyy")</p>
     </div>
     <div>

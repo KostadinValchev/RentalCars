@@ -16,11 +16,14 @@
             this.cars = cars;
         }
 
-        public async Task<IActionResult> Search(SearchFormModel model)
+        public async Task<IActionResult> Search(SearchFormModel model, int page = 1)
         {
             var viewModel = new SearchViewModel
             {
-                SearchText = model.SearchText
+                SearchText = model.SearchText,
+                Cars = await this.cars.AllAsync(page),
+                TotalCars = await this.cars.TotalAsync(),
+                CurrentPage = page
             };
 
             if (model.SearchInCity)

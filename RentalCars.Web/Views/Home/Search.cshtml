@@ -1,7 +1,11 @@
 ﻿@model SearchViewModel
 
 @{
-    ViewData["Title"] = $"Search Results For {Model.SearchText}";
+    ViewData["Title"] = $"Search Results For: {Model.SearchText}";
+}
+@{
+    string previousDisabled = Model.CurrentPage == 1 ? "disabled" : string.Empty;
+    string nextDisabled = Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty;
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -9,15 +13,45 @@
 @if (Model.Cars.Any())
 {
     <h3>Found Cars</h3>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @previousDisabled">
+                <a class="page-link"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Search"
+                   asp-route-page="@Model.PreviousPage"
+                   tabindex="-1">Previous</a>
+            </li>
+
+            <li class="page-item @nextDisabled">
+                <a class="page-link" asp-area="Agency" asp-controller="Cars" asp-action="All" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
+            </li>
+        </ul>
+    </nav>
 
     <div class="row course-listings">
-        @await Html.PartialAsync("_CarsListingsPartial", Model.Cars.Where(c => c.IsReserved == false))
+        @await Html.PartialAsync("_CarsSearchingPartial", Model.Cars.Where(c => c.IsReserved == false))
     </div>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item @previousDisabled">
+                    <a class="page-link"
+                       asp-area=""
+                       asp-controller="Home"
+                       asp-action="Search"
+                       asp-route-page="@Model.PreviousPage"
+                       tabindex="-1">Previous</a>
+                </li>
+
+                <li class="page-item @nextDisabled">
+                    <a class="page-link" asp-area="Agency" asp-controller="Cars" asp-action="All" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
+                </li>
+            </ul>
+        </nav>
 }
 else
 {
     <h3>No cars to show.</h3>
 }
-
-<br />
-

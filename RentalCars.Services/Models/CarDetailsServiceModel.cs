@@ -17,6 +17,8 @@
 
         public decimal Price { get; set; }
 
+        public int BookingCount { get; set; }
+
         public string ImgUrl { get; set; }
 
         public FuelType FuelType { get; set; }

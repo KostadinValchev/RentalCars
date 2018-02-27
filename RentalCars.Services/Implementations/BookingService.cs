@@ -19,6 +19,7 @@
         {
             this.db = db;
         }
+
         public async Task CreateAsync(DateTime startDate, DateTime returnDate, string userId, int carId)
         {
             var user = await this.db.Users.SingleOrDefaultAsync(u => u.Id == userId);
@@ -39,8 +40,8 @@
 
                 car.IsReserved = true;
                 car.ReturnDate = returnDate;
-                car.BookingCount++;
                 rentOrder.Price = car.Price * rentOrder.RentDays;
+                car.BookingCount++;
 
                 this.db.RentalOrders.Add(rentOrder);
                 this.db.Cars.Update(car);

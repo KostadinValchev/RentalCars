@@ -44,7 +44,7 @@
             var cars = await this.cars.AllCarsAsync(agencyName, page);
 
 
-            return this.View(new AllCarsAgencyViewModel
+            return this.View(new AllCarsListingViewModel
             {
                 Cars = cars,
                 TotalCars = await this.cars.TotalAsync(),
@@ -58,7 +58,7 @@
             var agencyName = await this.agencies.FindAgencyNameAsync(userId);
             var cars = await this.cars.AllReturnedCarsAsync(agencyName, page);
 
-            return this.View(new AllCarsAgencyViewModel
+            return this.View(new AllCarsListingViewModel
             {
                 Cars = cars,
                 TotalCars = await this.cars.TotalAsync(),

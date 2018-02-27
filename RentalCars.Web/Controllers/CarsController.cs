@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using RentalCars.Services;
     using RentalCars.Services.Models;
+    using RentalCars.Web.Models.HomeViewModels;
     using System.Threading.Tasks;
 
     public class CarsController : Controller
@@ -25,5 +26,13 @@
 
             return View(model);
         }
+
+        public async Task<IActionResult> TopPopularCars(int page = 1)
+        => View(new HomeIndexViewModel
+        {
+            Cars = await this.cars.AllAsync(page),
+            TotalCars = await this.cars.TotalAsync(),
+            CurrentPage = page
+        });
     }
 }

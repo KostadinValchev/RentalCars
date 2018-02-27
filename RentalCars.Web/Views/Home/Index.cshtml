@@ -4,14 +4,14 @@
     ViewData["Title"] = "Car For Rent";
 }
 
-@{ 
+@{
     string previousDisabled = Model.CurrentPage == 1 ? "disabled" : string.Empty;
     string nextDisabled = Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty;
 }
 
 <div class="jumbotron" style="background-image: url(https://www.rentawreck.com/media/72_convertible-car.jpg); background-size: 100% 100%;">
     <h1 class="text-jumbotron">Welcome</h1>
-   <br />
+    <br />
     <br />
     <h2 class="text-jumbotron">Find the right car for you!</h2>
 </div>
@@ -50,16 +50,15 @@
         </ul>
     </nav>
 
-    @await Html.PartialAsync("_CarsListingsPartial", Model.Cars.Where(c => c.IsReserved == false))
+    @await Html.PartialAsync("_CarsHomeListingsPartial", Model.Cars.Where(c => c.IsReserved == false))
 
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li class="page-item @previousDisabled" >
-                <a 
-                   class="page-link" 
-                   asp-controller="Home" 
-                   asp-action="Index" 
-                   asp-route-page="@Model.PreviousPage" 
+            <li class="page-item @previousDisabled">
+                <a class="page-link"
+                   asp-controller="Home"
+                   asp-action="Index"
+                   asp-route-page="@Model.PreviousPage"
                    tabindex="-1">Previous</a>
             </li>
 
@@ -68,4 +67,14 @@
             </li>
         </ul>
     </nav>
+    <div class="card text-center">
+        <div class="card-header">
+            Featured
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">Popular rent cars </h4>
+            <p class="card-text">See the most preferred cars from our customers.</p>
+            <a class="btn btn-primary" asp-area="" asp-controller="Cars" asp-action="TopPopularCars">Find Now</a>
+        </div>
+    </div>
 </div>
