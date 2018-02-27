@@ -1,0 +1,14 @@
+﻿@model HomeIndexViewModel
+
+@{
+    ViewData["Title"] = "Popular rent cars";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <a class="btn btn-default" asp-area="" asp-controller="Home" asp-action="Index">Back to home page</a>
+</div>
+<br />
+@await Html.PartialAsync("_TopPopularCarsListingsPartial",
+    Model.Cars.Where(c => c.IsReserved == false).OrderBy(c => c.BookingCount).Take(6))

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CarDetailsServiceModel>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                Car Make
+            </th>
+            <th>
+                Car Model
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Available
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+            {
+            <tr>
+                <th>
+                    <a href="http://localhost:58291/cars/details/@car.Id">
+                        <img src="@car.ImgUrl" alt="..." class="img-thumbnailSearch">
+                    </a>
+                </th>
+                <th>
+                    @car.Make
+                </th>
+                <th>
+                    @car.Model
+                </th>
+                <th>
+                    @car.Price &#36;
+                </th>
+                <th>
+                    @car.Category
+                </th>
+                <th>
+                    @(car.IsReserved ? "No" : "Yes")
+                </th>
+                <th>
+                    <a class="btn btn-info" asp-area="" asp-controller="Cars" asp-action="Details" asp-route-id="@car.Id">Details</a>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
