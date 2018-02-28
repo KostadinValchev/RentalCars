@@ -11,4 +11,4 @@
 </div>
 <br />
 @await Html.PartialAsync("_TopPopularCarsListingsPartial",
-    Model.Cars.Where(c => c.IsReserved == false).OrderBy(c => c.BookingCount).Take(6))
+    Model.Cars.Where(c => c.IsReserved == false).OrderByDescending(c => c.BookingCount).Take(6))
