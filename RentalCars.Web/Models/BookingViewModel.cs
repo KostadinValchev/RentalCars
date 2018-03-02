@@ -12,5 +12,9 @@
 
         [DataType(DataType.Date)]
         public DateTime ReturnDate { get; set; }
+
+        [Phone]
+        [Display(Name = "Phone number")]
+        public string PhoneNumber { get; set; }
     }
 }

@@ -29,20 +29,25 @@
         }
 
         [Authorize]
-        public IActionResult Create(int id)
-       => this.View(new BookingViewModel
-       {
-           CarId = id,
-           StartDate = DateTime.UtcNow,
-           ReturnDate = DateTime.UtcNow.AddDays(1)
-       });
+        public async Task<IActionResult> Create(int id)
+        {
+            var userId = userManager.GetUserId(User);
+            var currentUser = userManager.FindByIdAsync(userId);
+
+           return this.View(new BookingViewModel
+            {
+                CarId = id,
+                StartDate = DateTime.UtcNow,
+                ReturnDate = DateTime.UtcNow.AddDays(1),
+                PhoneNumber = currentUser.Result.PhoneNumber == null ? null : currentUser.Result.PhoneNumber
+            });
+        }
 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(BookingViewModel model)
         {
             var userId = userManager.GetUserId(User);
-
             if (!ModelState.IsValid)
             {
                 return this.View(new BookingViewModel
@@ -56,6 +61,7 @@
             await this.booking.CreateAsync(
                  model.StartDate,
                  model.ReturnDate,
+                 model.PhoneNumber,
                  userId,
                  model.CarId);
 

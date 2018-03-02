@@ -19,6 +19,11 @@
                 <input asp-for="ReturnDate" class="form-control" />
                 <span asp-validation-for="ReturnDate" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
             <input type="hidden" name="CarId" value="@Model.CarId" />
             <button type="submit" class="btn btn-primary">Book This Car</button>
         </form>

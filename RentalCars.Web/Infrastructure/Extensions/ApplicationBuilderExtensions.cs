@@ -54,7 +54,7 @@
                             {
                                 Email = adminEmail,
                                 UserName = adminName,
-                                Name = adminName,
+                                FirstName = adminName,
                                 Birthdate = DateTime.UtcNow
                             };
 

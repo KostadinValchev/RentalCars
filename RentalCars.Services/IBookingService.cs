@@ -7,7 +7,7 @@
 
     public interface IBookingService
     {
-        Task CreateAsync(DateTime startDate, DateTime returnDate, string userId, int carId);
+        Task CreateAsync(DateTime startDate, DateTime returnDate, string phoneNumber, string userId, int carId);
 
         Task<TModel> Details<TModel>(int id) where TModel : class;
 

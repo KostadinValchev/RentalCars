@@ -61,7 +61,7 @@
                 Id = one,
                 Price = hundred,
                 Agency = agency,
-                City = new City() { Id = one },
+                City = new City() { Id = one }
             };
 
             var fakeCarTwo = new Car()

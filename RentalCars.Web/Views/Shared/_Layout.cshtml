@@ -32,12 +32,16 @@
                 <ul class="nav navbar-nav">         
                     @if (User.IsInRole(WebConstants.AgencyRole))
                     {
-                        <li class="nav-item dropdown float-left">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Agency Panel</a>
-                            <div class="dropdown-menu">
-                                <a asp-area="Agency" asp-controller="Cars" asp-action="Create">Create Car</a>
-                                <a asp-area="Agency" asp-controller="Cars" asp-action="All">View All Cars</a>
-                            </div>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Agency Panel<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a asp-area="Agency" asp-controller="Cars" asp-action="Create">Create Car</a>
+                                    <a asp-area="Agency" asp-controller="Cars" asp-action="All">View All Cars</a>
+                                </li>
+                            </ul>
                         </li>
                     }
                     @if (User.IsInRole(WebConstants.AdminRole))

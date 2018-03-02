@@ -20,7 +20,7 @@
             this.db = db;
         }
 
-        public async Task CreateAsync(DateTime startDate, DateTime returnDate, string userId, int carId)
+        public async Task CreateAsync(DateTime startDate, DateTime returnDate, string phoneNumber, string userId, int carId)
         {
             var user = await this.db.Users.SingleOrDefaultAsync(u => u.Id == userId);
             var car = await this.db.Cars.SingleOrDefaultAsync(c => c.Id == carId);
@@ -37,7 +37,11 @@
                     Car = car,
                     RentDays = bookingDays.Days
                 };
-
+                if (user.PhoneNumber == null)
+                {
+                    user.PhoneNumber = phoneNumber;
+                    this.db.Update(user);
+                }
                 car.IsReserved = true;
                 car.ReturnDate = returnDate;
                 rentOrder.Price = car.Price * rentOrder.RentDays;

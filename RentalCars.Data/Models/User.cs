@@ -11,7 +11,11 @@
 
         [MinLength(UserNameMinLength)]
         [MaxLength(UserNameMaxLength)]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+
+        [MinLength(UserNameMinLength)]
+        [MaxLength(UserNameMaxLength)]
+        public string LastName { get; set; }
 
         public DateTime? Birthdate { get; set; }
 
