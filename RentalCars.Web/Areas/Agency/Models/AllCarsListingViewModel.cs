@@ -9,6 +9,8 @@
     {
         public IEnumerable<CarDetailsServiceModel> Cars { get; set; }
 
+        public ImageServiceModel Image { get; set; }
+
         public int TotalCars { get; set; }
 
         public int TotalPages => (int)Math.Ceiling((double)this.TotalCars / ServiceConstants.CarsAgencyPageSize);

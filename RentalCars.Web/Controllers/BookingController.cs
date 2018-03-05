@@ -29,7 +29,7 @@
         }
 
         [Authorize]
-        public async Task<IActionResult> Create(int id)
+        public IActionResult Create(int id)
         {
             var userId = userManager.GetUserId(User);
             var currentUser = userManager.FindByIdAsync(userId);
@@ -39,7 +39,7 @@
                 CarId = id,
                 StartDate = DateTime.UtcNow,
                 ReturnDate = DateTime.UtcNow.AddDays(1),
-                PhoneNumber = currentUser.Result.PhoneNumber == null ? null : currentUser.Result.PhoneNumber
+                PhoneNumber = currentUser.Result.PhoneNumber.Length > 0 ? currentUser.Result.PhoneNumber : String.Empty
             });
         }
 

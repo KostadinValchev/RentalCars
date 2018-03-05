@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using RentalCars.Data.Models;
+    using RentalCars.Services;
     using RentalCars.Services.Agency;
     using RentalCars.Services.Models;
     using RentalCars.Web.Areas.Agency.Models;
@@ -27,28 +28,34 @@
         private readonly IAgencyService agencies;
         private readonly IAgencyCarService cars;
         private readonly UserManager<User> userManager;
+        private readonly IImageService images;
 
         public CarsController(UserManager<User> userManager,
             IAgencyCarService cars,
-            IAgencyService agencies)
+            IAgencyService agencies,
+            IImageService images)
         {
             this.userManager = userManager;
             this.cars = cars;
             this.agencies = agencies;
+            this.images = images;
         }
 
         public async Task<IActionResult> All(int page = 1)
         {
             var userId = userManager.GetUserId(User);
             var agencyName = await this.agencies.FindAgencyNameAsync(userId);
+            var agencyId = await this.agencies.FindAgencyByIdAsync(userId);
             var cars = await this.cars.AllCarsAsync(agencyName, page);
+            var image = await this.images.AgencyImageByIdAsync(agencyId);
 
 
             return this.View(new AllCarsListingViewModel
             {
                 Cars = cars,
                 TotalCars = await this.cars.TotalAsync(),
-                CurrentPage = page
+                CurrentPage = page,
+                Image = image
             });
         }
 

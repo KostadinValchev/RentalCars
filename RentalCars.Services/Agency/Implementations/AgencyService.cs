@@ -14,12 +14,13 @@
             this.db = db;
         }
 
-        public async Task CreateAsync(string name, string userId)
+        public async Task CreateAsync(string name, string userId, Image image)
         {
             var agency = new Agency()
             {
                 Name = name,
-                UserId = userId
+                UserId = userId,
+                Image = image,
             };
 
             if (agency != null)

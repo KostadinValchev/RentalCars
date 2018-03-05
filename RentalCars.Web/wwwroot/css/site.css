@@ -51,6 +51,13 @@
     height: 250px;
 }
 
+.agency-logo-menuAgency {
+    height: 180px;
+    width: 220px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
 .img-thumbnailDesctop {
     height: 200px;
     width: 250px;

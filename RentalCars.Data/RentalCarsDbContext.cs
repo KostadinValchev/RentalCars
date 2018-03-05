@@ -19,6 +19,8 @@
 
         public DbSet<RentalOrder> RentalOrders { get; set; }
 
+        public DbSet<Image> Images { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Agency>()
@@ -62,6 +64,11 @@
                 .HasOne(c => c.City)
                 .WithMany(ci => ci.Cars)
                 .HasForeignKey(fk => fk.CityId);
+
+            builder.Entity<Agency>()
+            .HasOne(a => a.Image)
+            .WithOne(i => i.Agency)
+            .HasForeignKey<Image>(b => b.AgencyId);
 
             base.OnModelCreating(builder);
         }

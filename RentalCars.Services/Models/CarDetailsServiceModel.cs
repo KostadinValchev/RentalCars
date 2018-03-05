@@ -1,5 +1,6 @@
 ﻿namespace RentalCars.Services.Models
 {
+    using AutoMapper;
     using RentalCars.Common.Mapping;
     using RentalCars.Data.Models;
     using System;
@@ -40,6 +41,13 @@
 
         public Agency Agency { get; set; }
 
+        public byte[] AgencyLogo { get; set; }
+
         public City City { get; set; }
+
+        public void ConfigureMapping(Profile mapper)
+            => mapper
+                 .CreateMap<Car, CarDetailsServiceModel>()
+                 .ForMember(c => c.AgencyLogo, cfg => cfg.MapFrom(c => c.Agency.Image.Data));
     }
 }

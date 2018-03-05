@@ -5,11 +5,20 @@
 }
 
 @{
+    var base64 = Model.Image != null? Convert.ToBase64String(@Model.Image.Data):string.Empty;
+    var imgSrc = String.Format("data:image/png;base64,{0}", base64);
+}
+
+@{
     string previousDisabled = Model.CurrentPage == 1 ? "disabled" : string.Empty;
     string nextDisabled = Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty;
 }
 
 <h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <img src="@imgSrc" class="agency-logo-menuAgency" />
+</div>
 
 <div class="row">
     <div class="col-md-6">

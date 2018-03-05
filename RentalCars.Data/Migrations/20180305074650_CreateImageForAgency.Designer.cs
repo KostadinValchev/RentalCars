@@ -8,8 +8,8 @@ namespace RentalCars.Data.Migrations
     using System;
 
     [DbContext(typeof(RentalCarsDbContext))]
-    [Migration("20180302183713_AddFirstAndLastNameOnUser")]
-    partial class AddFirstAndLastNameOnUser
+    [Migration("20180305074650_CreateImageForAgency")]
+    partial class CreateImageForAgency
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -131,6 +131,8 @@ namespace RentalCars.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("ImageId");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50);
@@ -138,6 +140,8 @@ namespace RentalCars.Data.Migrations
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ImageId");
 
                     b.HasIndex("Name")
                         .IsUnique();
@@ -223,6 +227,28 @@ namespace RentalCars.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("RentalCars.Data.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ContentType");
+
+                    b.Property<byte[]>("Data");
+
+                    b.Property<int>("Height");
+
+                    b.Property<int>("Length");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Width");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("RentalCars.Data.Models.RentalOrder", b =>
@@ -357,6 +383,10 @@ namespace RentalCars.Data.Migrations
 
             modelBuilder.Entity("RentalCars.Data.Models.Agency", b =>
                 {
+                    b.HasOne("RentalCars.Data.Models.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId");
+
                     b.HasOne("RentalCars.Data.Models.User", "User")
                         .WithOne("Agency")
                         .HasForeignKey("RentalCars.Data.Models.Agency", "UserId");

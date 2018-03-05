@@ -5,7 +5,7 @@
 
     public interface IAgencyService
     {
-        Task CreateAsync(string name, string userId);
+        Task CreateAsync(string name, string userId, Image image);
 
         Task<string> FindAgencyNameAsync(string id);
 

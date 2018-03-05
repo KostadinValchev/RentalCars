@@ -228,6 +228,34 @@ namespace RentalCars.Data.Migrations
                     b.ToTable("Cities");
                 });
 
+            modelBuilder.Entity("RentalCars.Data.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("AgencyId");
+
+                    b.Property<string>("ContentType");
+
+                    b.Property<byte[]>("Data");
+
+                    b.Property<int>("Height");
+
+                    b.Property<int>("Length");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Width");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgencyId")
+                        .IsUnique()
+                        .HasFilter("[AgencyId] IS NOT NULL");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("RentalCars.Data.Models.RentalOrder", b =>
                 {
                     b.Property<int>("Id")
@@ -389,6 +417,13 @@ namespace RentalCars.Data.Migrations
                         .WithMany("Cars")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("RentalCars.Data.Models.Image", b =>
+                {
+                    b.HasOne("RentalCars.Data.Models.Agency", "Agency")
+                        .WithOne("Image")
+                        .HasForeignKey("RentalCars.Data.Models.Image", "AgencyId");
                 });
 
             modelBuilder.Entity("RentalCars.Data.Models.RentalOrder", b =>
