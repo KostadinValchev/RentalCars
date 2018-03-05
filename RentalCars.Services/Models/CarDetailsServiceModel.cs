@@ -41,13 +41,13 @@
 
         public Agency Agency { get; set; }
 
-        public byte[] AgencyLogo { get; set; }
+        public Image Image { get; set; }
 
         public City City { get; set; }
 
         public void ConfigureMapping(Profile mapper)
             => mapper
                  .CreateMap<Car, CarDetailsServiceModel>()
-                 .ForMember(c => c.AgencyLogo, cfg => cfg.MapFrom(c => c.Agency.Image.Data));
+                 .ForMember(c => c.Image, cfg => cfg.MapFrom(c => c.Image));
     }
 }

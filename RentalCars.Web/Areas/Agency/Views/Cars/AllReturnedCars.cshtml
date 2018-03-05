@@ -5,11 +5,20 @@
 }
 
 @{
+    var logoBase64 = Model.Image != null ? Convert.ToBase64String(@Model.Image.Data) : string.Empty;
+    var logoSrc = String.Format("data:image/png;base64,{0}", logoBase64);
+}
+
+@{
     string previousDisabled = Model.CurrentPage == 1 ? "disabled" : string.Empty;
     string nextDisabled = Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty;
 }
 
 <h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <img src="@logoSrc" class="agency-logo-menuAgency" />
+</div>
 
 <div class="row">
     <div class="col-md-6">
@@ -66,7 +75,11 @@
         {
             <tr>
                 <th>
-                    <img src="@car.ImgUrl" alt="..." class="img-thumbnailDesctop">
+                    @{
+                        var Base64 = car.Image.Data != null ? Convert.ToBase64String(car.Image.Data) : string.Empty;
+                        var imgSrc = String.Format("data:image/png;base64,{0}", Base64);
+                    }
+                    <img src="@imgSrc" alt="" class="img-thumbnailDesctop" />
                 </th>
                 <th>
                     @car.Make
@@ -90,7 +103,7 @@
                     </form>
                 </th>
             </tr>
-        }
+                        }
     </tbody>
 </table>
 

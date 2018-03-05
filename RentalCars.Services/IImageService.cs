@@ -11,5 +11,7 @@
         Task<Image> CreateImageInDatabaseAsync(ICollection<IFormFile> image);
 
         Task<ImageServiceModel> AgencyImageByIdAsync(int id);
+
+        Task<ImageServiceModel> CarImageByIdAsync(int id);
     }
 }

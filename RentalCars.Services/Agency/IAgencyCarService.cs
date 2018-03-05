@@ -19,7 +19,7 @@
             bool mp3Player,
             int agencyId,
             int cityId,
-            string img);
+            Image img);
 
         Task<bool> DeleteAsync(int id);
 

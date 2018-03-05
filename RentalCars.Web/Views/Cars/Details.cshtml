@@ -1,11 +1,16 @@
 ﻿@model CarDetailsServiceModel
 
+@{
+    var Base64 = Model.Image.Data != null ? Convert.ToBase64String(Model.Image.Data) : string.Empty;
+    var imgSrc = String.Format("data:image/png;base64,{0}", Base64);
+}
+
 
 <div class="row">
     <div class="col-md-9">
         <h1>@Model.Agency.Name</h1>
     </div>
-    <img src="@Model.ImgUrl" alt="..." class="img-thumbnail">
+    <img src="@imgSrc" alt="..." class="car-details-image"/>
     <div>
         <h3>Price per day: @Model.Price &#36;</h3>
     </div>

@@ -11,8 +11,12 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <a href="http://localhost:58291/cars/details/@car.Id">
-                        <img src="@car.ImgUrl" class="img-responsive">
+                    @{
+                        var Base64 = car.Image.Data != null ? Convert.ToBase64String(car.Image.Data) : string.Empty;
+                        var imgSrc = String.Format("data:image/png;base64,{0}", Base64);
+                    }
+                    <a href="http://localhost:58291/cars/details/@car.Id"> 
+                        <img src="@imgSrc" alt="" class="img-thumbnailDesctop" />
                     </a>
                     <br />
                     <p class="text-center">@car.Agency.Name - Price: <font color="green"><strong>@car.Price &#36;</strong></font></p>

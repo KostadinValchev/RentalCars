@@ -5,8 +5,8 @@
 }
 
 @{
-    var base64 = Model.Image != null? Convert.ToBase64String(@Model.Image.Data):string.Empty;
-    var imgSrc = String.Format("data:image/png;base64,{0}", base64);
+    var logoBase64 = Model.Image != null ? Convert.ToBase64String(@Model.Image.Data) : string.Empty;
+    var logoSrc = String.Format("data:image/png;base64,{0}", logoBase64);
 }
 
 @{
@@ -17,7 +17,7 @@
 <h2>@ViewData["Title"]</h2>
 
 <div class="row">
-    <img src="@imgSrc" class="agency-logo-menuAgency" />
+    <img src="@logoSrc" class="agency-logo-menuAgency" />
 </div>
 
 <div class="row">
@@ -74,8 +74,12 @@
             {
             <tr>
                 <th>
+                    @{
+                        var Base64 = car.Image.Data != null ? Convert.ToBase64String(car.Image.Data) : string.Empty;
+                        var imgSrc = String.Format("data:image/png;base64,{0}", Base64);
+                    }
                     <a href="http://localhost:58291/cars/details/@car.Id">
-                        <img src="@car.ImgUrl" alt="..." class="img-thumbnailDesctop">
+                        <img src="@imgSrc" alt="" class="img-thumbnailDesctop"/>
                     </a>
                 </th>
                 <th>
@@ -99,7 +103,7 @@
                     <a class="btn btn-danger" asp-area="Agency" asp-controller="Cars" asp-action="Delete" asp-route-id="@car.Id">Delete</a>
                 </th>
             </tr>
-        }
+                        }
     </tbody>
 </table>
 

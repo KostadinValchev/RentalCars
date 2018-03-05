@@ -55,7 +55,7 @@
             bool mp3Player,
             int agencyId,
             int cityId,
-            string img)
+            Image img)
         {
             var car = new Car()
             {
@@ -71,7 +71,7 @@
                 Mp3Player = mp3Player,
                 AgencyId = agencyId,
                 CityId = cityId,
-                ImgUrl = img,
+                Image = img,
             };
 
             this.db.Cars.Add(car);

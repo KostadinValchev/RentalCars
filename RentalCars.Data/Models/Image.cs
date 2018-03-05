@@ -19,5 +19,9 @@
         public int? AgencyId { get; set; }
 
         public Agency Agency { get; set; }
+
+        public int? CarId { get; set; }
+
+        public Car Car { get; set; }
     }
 }

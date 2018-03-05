@@ -1,5 +1,6 @@
 ﻿namespace RentalCars.Web.Areas.Agency.Models
 {
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using RentalCars.Data.Models;
     using System.Collections.Generic;
@@ -22,7 +23,7 @@
         [Range(0, double.MaxValue)]
         public decimal Price { get; set; }
 
-        public string ImgUrl { get; set; }
+        public ICollection<IFormFile> Image { get; set; }
 
         public FuelType FuelType { get; set; }
 

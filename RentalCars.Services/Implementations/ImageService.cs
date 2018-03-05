@@ -28,7 +28,16 @@
               .ProjectTo<ImageServiceModel>()
           .FirstOrDefaultAsync();
 
+        public async Task<ImageServiceModel> CarImageByIdAsync(int id)
+        {
+            var image = await this.db
+                .Images
+                .Where(i => i.CarId == id)
+                .ProjectTo<ImageServiceModel>()
+                .FirstOrDefaultAsync();
 
+            return image;
+        }
 
         public async Task<Image> CreateImageInDatabaseAsync(ICollection<IFormFile> file)
         {

@@ -70,6 +70,11 @@
             .WithOne(i => i.Agency)
             .HasForeignKey<Image>(b => b.AgencyId);
 
+            builder.Entity<Car>()
+            .HasOne(c => c.Image)
+            .WithOne(i => i.Car)
+            .HasForeignKey<Image>(b => b.CarId);
+
             base.OnModelCreating(builder);
         }
     }

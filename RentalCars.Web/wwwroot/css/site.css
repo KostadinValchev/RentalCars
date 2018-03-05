@@ -51,9 +51,13 @@
     height: 250px;
 }
 
+.car-details-image {
+    height: 450px;
+}
+
 .agency-logo-menuAgency {
     height: 180px;
-    width: 220px;
+    width: 260px;
     margin-left: 20px;
     margin-bottom: 20px;
 }
@@ -62,6 +66,7 @@
     height: 200px;
     width: 250px;
 }
+
 .img-thumbnailSearch {
     height: 130px;
     width: 200px;

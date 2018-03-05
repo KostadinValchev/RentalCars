@@ -48,6 +48,5 @@
                 .ProjectTo<CarDetailsServiceModel>()
                 .ToListAsync();
         }
-
     }
 }

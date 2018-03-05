@@ -63,13 +63,16 @@
         {
             var userId = userManager.GetUserId(User);
             var agencyName = await this.agencies.FindAgencyNameAsync(userId);
+            var agencyId = await this.agencies.FindAgencyByIdAsync(userId);
             var cars = await this.cars.AllReturnedCarsAsync(agencyName, page);
+            var image = await this.images.AgencyImageByIdAsync(agencyId);
 
             return this.View(new AllCarsListingViewModel
             {
                 Cars = cars,
                 TotalCars = await this.cars.TotalAsync(),
-                CurrentPage = page
+                CurrentPage = page,
+                Image = image
             });
         }
 
@@ -94,6 +97,8 @@
                 return View(carModel);
             }
 
+            var image = await this.images.CreateImageInDatabaseAsync(carModel.Image);
+
             await this.cars.CreateAsync(
                   carModel.Make,
                   carModel.Model,
@@ -107,7 +112,7 @@
                   carModel.Mp3Player,
                   agencyId,
                   carModel.CitiesId,
-                  carModel.ImgUrl);
+                  image);
 
             TempData.AddSuccessMessage(CarSuccessMessage);
             return RedirectToAction(
