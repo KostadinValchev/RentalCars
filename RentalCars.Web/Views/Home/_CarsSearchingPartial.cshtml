@@ -6,6 +6,8 @@
             <th>
             </th>
             <th>
+            </th>
+            <th>
                 Car Make
             </th>
             <th>
@@ -28,8 +30,19 @@
             {
             <tr>
                 <th>
+                    @{
+                        var base64 = car.AgencyLogo != null ? Convert.ToBase64String(car.AgencyLogo.Data) : string.Empty;
+                        var logoSrc = String.Format("data:image/png;base64,{0}", base64);
+                    }
+                    <img src="@logoSrc" alt="..." class="img-thumbnailSearch">
+                </th>
+                <th>
+                    @{
+                        var imageBase64 = car.Image != null ? Convert.ToBase64String(car.Image.Data) : string.Empty;
+                        var imageSrc = String.Format("data:image/png;base64,{0}", imageBase64);
+                    }
                     <a href="http://localhost:58291/cars/details/@car.Id">
-                        <img src="@car.ImgUrl" alt="..." class="img-thumbnailSearch">
+                        <img src="@imageSrc" alt="..." class="img-thumbnailSearch">
                     </a>
                 </th>
                 <th>
@@ -51,8 +64,6 @@
                     <a class="btn btn-info" asp-area="" asp-controller="Cars" asp-action="Details" asp-route-id="@car.Id">Details</a>
                 </th>
             </tr>
-        }
+                        }
     </tbody>
 </table>
-
-

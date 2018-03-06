@@ -12,9 +12,10 @@ using System;
 namespace RentalCars.Data.Migrations
 {
     [DbContext(typeof(RentalCarsDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180306115156_CreateImageIdFiealdInAgency")]
+    partial class CreateImageIdFiealdInAgency
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

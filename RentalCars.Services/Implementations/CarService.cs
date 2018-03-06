@@ -31,22 +31,31 @@
         public async Task<int> TotalAsync()
         => await this.db.Cars.Where(c => c.IsReserved == false).CountAsync();
 
-        public async Task<TModel> ByIdAsync<TModel>(int id) where TModel : class
-        => await this.db
-            .Cars
-            .Where(c => c.Id == id)
-            .ProjectTo<TModel>()
-            .FirstOrDefaultAsync();
+        public async Task<CarDetailsServiceModel> ByIdAsync(int id)
+        {
+            var result = await this.db
+             .Cars
+             .Where(c => c.Id == id)
+             .ProjectTo<CarDetailsServiceModel>()
+             .FirstOrDefaultAsync();
 
+            result.AgencyLogo = await this.db.Images.FirstOrDefaultAsync(i => i.Id == result.Agency.ImageId);
+
+            return result;
+        }
         public async Task<IEnumerable<CarDetailsServiceModel>> FindCarByCityAsync(string searchText)
         {
             searchText = searchText ?? string.Empty;
-
-            return await this.db.Cars
+            var result = await this.db.Cars
                 .OrderBy(c => c.Price)
                 .Where(c => c.City.Name.ToLower().Contains(searchText.ToLower()))
                 .ProjectTo<CarDetailsServiceModel>()
                 .ToListAsync();
+            foreach (var car in result)
+            {
+                car.AgencyLogo = await this.db.Images.FirstOrDefaultAsync(i => i.Id == car.Agency.ImageId);
+            }
+            return result;
         }
     }
 }

@@ -6,7 +6,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class CarDetailsServiceModel : IMapFrom<Car>
+    public class CarDetailsServiceModel : IMapFrom<Car>, IHaveCustomMapping
     {
         public int Id { get; set; }
 
@@ -41,6 +41,8 @@
 
         public Agency Agency { get; set; }
 
+        public Image AgencyLogo { get; set; }
+
         public Image Image { get; set; }
 
         public City City { get; set; }
@@ -48,6 +50,8 @@
         public void ConfigureMapping(Profile mapper)
             => mapper
                  .CreateMap<Car, CarDetailsServiceModel>()
+                 .ForMember(c => c.Agency, cfg => cfg.MapFrom(c => c.Agency))
                  .ForMember(c => c.Image, cfg => cfg.MapFrom(c => c.Image));
+
     }
 }

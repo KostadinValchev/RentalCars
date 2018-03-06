@@ -28,8 +28,6 @@
 
         public FuelType FuelType { get; set; }
 
-        public string ImgUrl { get; set; }
-
         public bool AirConditioner { get; set; }
 
         public bool Navigation { get; set; }
@@ -43,6 +41,8 @@
         public bool IsReserved { get; set; }
 
         public DateTime ReturnDate { get; set; }
+
+        public Image AgencyLogo { get; set; }
 
         public List<RentalOrder> Orders { get; set; } = new List<RentalOrder>();
 

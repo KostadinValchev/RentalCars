@@ -17,7 +17,7 @@
 
         public async Task<IActionResult> Details (int id)
         {
-            var model =await this.cars.ByIdAsync<CarDetailsServiceModel>(id);
+            var model =await this.cars.ByIdAsync(id);
 
             if (model == null)
             {

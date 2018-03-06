@@ -25,7 +25,7 @@
                 TotalCars = await this.cars.TotalAsync(),
                 CurrentPage = page
             };
-
+            
             if (model.SearchInCity)
             {
                 viewModel.Cars = await this.cars.FindCarByCityAsync(model.SearchText);

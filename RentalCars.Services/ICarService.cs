@@ -6,7 +6,7 @@
 
     public interface ICarService
     {
-        Task<TModel> ByIdAsync<TModel>(int id) where TModel : class;
+        Task<CarDetailsServiceModel> ByIdAsync(int id);
 
         Task<IEnumerable<CarDetailsServiceModel>> AllAsync(int page = 1);
 

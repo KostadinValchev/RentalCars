@@ -5,10 +5,17 @@
     var imgSrc = String.Format("data:image/png;base64,{0}", Base64);
 }
 
+@{
+    var logoBase64 = Model.AgencyLogo != null ? Convert.ToBase64String(@Model.AgencyLogo.Data) : string.Empty;
+    var logoSrc = String.Format("data:image/png;base64,{0}", logoBase64);
+}
 
 <div class="row">
-    <div class="col-md-9">
+    <div >
         <h1>@Model.Agency.Name</h1>
+    </div>
+    <div>
+        <img src="@logoSrc" class="agency-logo-menuAgency" />
     </div>
     <img src="@imgSrc" alt="..." class="car-details-image"/>
     <div>
