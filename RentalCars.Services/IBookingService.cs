@@ -9,11 +9,11 @@
     {
         Task CreateAsync(DateTime startDate, DateTime returnDate, string phoneNumber, string userId, int carId);
 
-        Task<TModel> Details<TModel>(int id) where TModel : class;
+        Task<BookingDetailsModel> Details(int id);
 
-        Task<IEnumerable<BookingDetailsModel>> FindAllBookings<TModel>(string id, int page = 1) where TModel : class;
+        Task<IEnumerable<BookingDetailsModel>> FindAllBookings(string id, int page = 1);
 
-        Task<TModel> FindLastBooking<TModel>(string id) where TModel : class;
+        Task<BookingDetailsModel> FindLastBooking(string id);
 
         Task<int> TotalBookingAsync(string id);
     }

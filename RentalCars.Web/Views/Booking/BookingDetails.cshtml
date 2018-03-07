@@ -1,11 +1,28 @@
 ﻿@model BookingDetailsModel
+
 @{
     ViewData["Title"] = "Booking Summary";
 }
+
+@{
+            var logoBase64 = Model.AgencyLogo != null ? Convert.ToBase64String(@Model.AgencyLogo.Data) : string.Empty;
+            var logoSrc = String.Format("data:image/png;base64,{0}", logoBase64);
+}
+
+@{
+    var Base64 = Model.Image.Data != null ? Convert.ToBase64String(Model.Image.Data) : string.Empty;
+    var imgSrc = String.Format("data:image/png;base64,{0}", Base64);
+}
+
 <h1>@ViewData["Title"]</h1>
 
 <div class="row">
-        <img src="@Model.Car.ImgUrl" alt="..." class="img-thumbnail">
+    <div>
+        <img src="@logoSrc" class="agency-logo-menuAgency" />
+    </div>
+    <div>
+        <img src="@imgSrc" alt="..." class="img-thumbnail">
+    </div>
     <div>
         <p>@Model.Car.Make  @Model.Car.Model</p>
     </div>
@@ -13,9 +30,11 @@
         <p>@Model.User.FirstName @Model.User.LastName</p>
     </div>
     <div>
+        <p>Date of hiring</p>
         <p>@Model.StartDate.Date.ToString("d-MMM-yyyy")</p>
     </div>
     <div>
+        <p>Return date</p>
         <p>@Model.ReturnDate.Date.ToString("d MMM yyyy")</p>
     </div>
     <div>

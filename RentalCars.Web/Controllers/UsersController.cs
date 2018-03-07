@@ -30,7 +30,7 @@
             var userId = userManager.GetUserId(User);
 
             var userHistory = await this.users.ByIdAsync<UserHistoryServiceModel>(userId);
-            userHistory.Orders = await this.bookings.FindAllBookings<BookingDetailsModel>(userId, page);
+            userHistory.Orders = await this.bookings.FindAllBookings(userId, page);
             userHistory.TotalOrders = await this.bookings.TotalBookingAsync(userId);
             userHistory.CurrentPage = page;
 

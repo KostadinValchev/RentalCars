@@ -32,14 +32,14 @@
         public IActionResult Create(int id)
         {
             var userId = userManager.GetUserId(User);
-            var currentUser = userManager.FindByIdAsync(userId);
+            var currentUser = userManager.FindByIdAsync(userId).Result;
 
-           return this.View(new BookingViewModel
+            return this.View(new BookingViewModel
             {
                 CarId = id,
                 StartDate = DateTime.UtcNow,
                 ReturnDate = DateTime.UtcNow.AddDays(1),
-                PhoneNumber = currentUser.Result.PhoneNumber.Length > 0 ? currentUser.Result.PhoneNumber : String.Empty
+                PhoneNumber = currentUser.PhoneNumber.Length > 0 ? currentUser.PhoneNumber : String.Empty
             });
         }
 
@@ -74,7 +74,7 @@
         [Authorize]
         public async Task<IActionResult> BookingDetails(int id)
         {
-            var bookingModel = await this.booking.Details<BookingDetailsModel>(id);
+            var bookingModel = await this.booking.Details(id);
 
             return View(bookingModel);
         }
@@ -83,7 +83,7 @@
         public async Task<IActionResult> UserLastBooking()
         {
             var userId = this.userManager.GetUserId(User);
-            var bookingModel = await this.booking.FindLastBooking<BookingDetailsModel>(userId);
+            var bookingModel = await this.booking.FindLastBooking(userId);
 
             return View(bookingModel);
         }

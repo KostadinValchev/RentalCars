@@ -4,12 +4,16 @@
     ViewData["Title"] = "Car For Rent";
 }
 
+@{ 
+    string jumbotronUrl = WebConstants.jumbotronURL;
+}
+
 @{
     string previousDisabled = Model.CurrentPage == 1 ? "disabled" : string.Empty;
     string nextDisabled = Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty;
 }
 
-<div class="jumbotron" style="background-image: url(https://www.rentawreck.com/media/72_convertible-car.jpg); background-size: 100% 100%;">
+<div class="jumbotron" style="background-image: url(@jumbotronUrl); background-size: 100% 100%;">
     <h1 class="text-jumbotron">Welcome</h1>
     <br />
     <br />
@@ -23,7 +27,6 @@
         </div>
         <div class="col-md-2">
             <input type="hidden" asp-for="SearchInCity" />
-            @*<label asp-for="SearchInCity"></label>*@
         </div>
         <div class="col-md-2">
             <input type="submit" class="btn btn-default pull-right" value="Search" />

@@ -13,10 +13,20 @@
 {
     <div class="row">
         @{
-            var base64 = Model.Car.Image.Data != null ? Convert.ToBase64String(Model.Car.Image.Data) : string.Empty;
+            var logoBase64 = Model.AgencyLogo != null ? Convert.ToBase64String(@Model.AgencyLogo.Data) : string.Empty;
+            var logoSrc = String.Format("data:image/png;base64,{0}", logoBase64);
+        }
+        <div>
+            <img src="@logoSrc" class="agency-logo-menuAgency" />
+        </div>
+
+        @{
+            var base64 = Model.Image.Data != null ? Convert.ToBase64String(Model.Image.Data) : string.Empty;
             var imgSrc = String.Format("data:image/png;base64,{0}", base64);
         }
-        <img src="@imgSrc" alt="" class="car-details-image" />
+        <div>
+            <img src="@imgSrc" alt="" class="car-details-image" />
+        </div>
         <div>
             <p>Car model</p>
             <p>@Model.Car.Make  @Model.Car.Model</p>
@@ -26,7 +36,7 @@
             <p>@Model.User.FirstName @Model.User.LastName</p>
         </div>
         <div>
-            <p>Start date</p>
+            <p>Date of hiring</p>
             <p>@Model.StartDate.Date.ToString("d-MMM-yyyy")</p>
         </div>
         <div>
@@ -40,7 +50,7 @@
             }
             else
             {
-                <p>No bookings yet.</p>
+                <p>No booking yet.</p>
             }
 
 

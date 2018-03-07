@@ -52,6 +52,5 @@
                  .CreateMap<Car, CarDetailsServiceModel>()
                  .ForMember(c => c.Agency, cfg => cfg.MapFrom(c => c.Agency))
                  .ForMember(c => c.Image, cfg => cfg.MapFrom(c => c.Image));
-
     }
 }

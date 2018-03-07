@@ -11,93 +11,107 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item @previousDisabled">
-            <a class="page-link"
-               asp-controller="Users"
-               asp-action="BookingHistory"
-               asp-route-page="@Model.PreviousPage"
-               tabindex="-1">Previous</a>
-        </li>
+@if (Model.TotalOrders != 0)
+{
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @previousDisabled">
+                <a class="page-link"
+                   asp-controller="Users"
+                   asp-action="BookingHistory"
+                   asp-route-page="@Model.PreviousPage"
+                   tabindex="-1">Previous</a>
+            </li>
 
-        <li class="page-item @nextDisabled">
-            <a class="page-link" asp-controller="Users" asp-action="BookingHistory" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
-        </li>
-    </ul>
-</nav>
+            <li class="page-item @nextDisabled">
+                <a class="page-link" asp-controller="Users" asp-action="BookingHistory" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
+            </li>
+        </ul>
+    </nav>
 
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>
-
-            </th>
-            <th>
-                Agency
-            </th>
-            <th>
-                Car
-            </th>
-            <th>
-                Start Date
-            </th>
-            <th>
-                Return Date
-            </th>
-            <th>
-                Finall Price
-            </th>
-            <th>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var order in Model.Orders)
-        {
+    <table class="table table-bordered table-hover">
+        <thead>
             <tr>
                 <th>
-                    <a href="http://localhost:58291/booking/BookingDetails/@order.CarId">
-                        <img src="@order.Car.ImgUrl" alt="..." class="img-thumbnailDesctop">
-                    </a>
-                </th>
-                <th>
 
                 </th>
                 <th>
-                    @order.Car.Make @order.Car.Model
+                    Agency
                 </th>
                 <th>
-                    @order.StartDate.Date.ToString("d-MMM-yyyy")
+                    Car
                 </th>
                 <th>
-                    @order.ReturnDate.Date.ToString("d-MMM-yyyy")
+                    Start Date
                 </th>
                 <th>
-                    @order.Price
+                    Return Date
                 </th>
                 <th>
-                    <a class="btn btn-info" asp-area="" asp-controller="Booking" asp-action="BookingDetails" asp-route-id="@order.Id" a>Details</a>
+                    Finall Price
+                </th>
+                <th>
                 </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <th>
+                        @{
+                            var base64 = order.AgencyLogo != null ? Convert.ToBase64String(order.AgencyLogo.Data) : string.Empty;
+                            var logoSrc = String.Format("data:image/png;base64,{0}", base64);
+                        }
+                        <img src="@logoSrc" alt="..." class="img-thumbnailSearch">
+                    </th>
+                    <th>
+                        @{
+                            var imageBase64 = order.Image != null ? Convert.ToBase64String(order.Image.Data) : string.Empty;
+                            var imageSrc = String.Format("data:image/png;base64,{0}", imageBase64);
+                        }
+                        <img src="@imageSrc" alt="..." class="img-thumbnailSearch">
+                    </th>
+                    <th>
+                        @order.Car.Make @order.Car.Model
+                    </th>
+                    <th>
+                        @order.StartDate.Date.ToString("d-MMM-yyyy")
+                    </th>
+                    <th>
+                        @order.ReturnDate.Date.ToString("d-MMM-yyyy")
+                    </th>
+                    <th>
+                        @order.Price
+                    </th>
+                    <th>
+                        <a class="btn btn-info" asp-area="" asp-controller="Booking" asp-action="BookingDetails" asp-route-id="@order.Id" a>Details</a>
+                    </th>
+                </tr>
+                            }
+        </tbody>
+    </table>
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item @previousDisabled">
-            <a class="page-link"
-               asp-controller="Users"
-               asp-action="BookingHistory"
-               asp-route-page="@Model.PreviousPage"
-               tabindex="-1">Previous</a>
-        </li>
 
-        <li class="page-item @nextDisabled">
-            <a class="page-link" asp-controller="Users" asp-action="BookingHistory" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
-        </li>
-    </ul>
-</nav>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @previousDisabled">
+                <a class="page-link"
+                   asp-controller="Users"
+                   asp-action="BookingHistory"
+                   asp-route-page="@Model.PreviousPage"
+                   tabindex="-1">Previous</a>
+            </li>
+
+            <li class="page-item @nextDisabled">
+                <a class="page-link" asp-controller="Users" asp-action="BookingHistory" asp-route-page="@Model.NextPage" tabindex="+1">Next</a>
+            </li>
+        </ul>
+    </nav>
+                            }
+                            else
+                            {
+                                <p>No booking yet.</p>
+                            }
 
 

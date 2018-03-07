@@ -53,27 +53,75 @@
             }
         }
 
-        public async Task<TModel> Details<TModel>(int id) where TModel : class
-      => await this.db.RentalOrders
-          .Where(u => u.Id == id)
-          .ProjectTo<TModel>()
-          .FirstOrDefaultAsync();
-
-        public async Task<IEnumerable<BookingDetailsModel>> FindAllBookings<TModel>(string id, int page = 1) where TModel : class
-            => await this.db.RentalOrders
-            .Where(u => u.UserId == id)
-            .OrderBy(o => o.Id)
-            .Skip((page - 1) * OrdersUserHistoryPageSize)
-            .Take(OrdersUserHistoryPageSize)
+        public async Task<BookingDetailsModel> Details(int id)
+        {
+          var result =  await this.db.RentalOrders
+            .Where(u => u.Id == id)
             .ProjectTo<BookingDetailsModel>()
-            .ToListAsync();
-
-        public async Task<TModel> FindLastBooking<TModel>(string id) where TModel : class
-        => await this.db.RentalOrders
-            .Where(u => u.UserId == id)
-            .OrderByDescending(o => o.Id)
-            .ProjectTo<TModel>()
             .FirstOrDefaultAsync();
+
+            if (result != null)
+            {
+                var carId = result.CarId;
+                var agencyId = result.Car.AgencyId;
+
+                var image = this.db.Images.SingleOrDefaultAsync(i => i.CarId == carId).Result;
+                var logo = this.db.Images.SingleOrDefaultAsync(i => i.AgencyId == agencyId).Result;
+
+                result.Image = image;
+                result.AgencyLogo = logo;
+            }
+
+            return result;
+        }
+        public async Task<IEnumerable<BookingDetailsModel>> FindAllBookings(string id, int page = 1)
+        {
+            var result = await this.db.RentalOrders
+               .Where(u => u.UserId == id)
+               .OrderBy(o => o.Id)
+               .Skip((page - 1) * OrdersUserHistoryPageSize)
+               .Take(OrdersUserHistoryPageSize)
+               .ProjectTo<BookingDetailsModel>()
+               .ToListAsync();
+
+            if (result != null)
+            {
+                foreach (var item in result)
+                {
+                    var carId = item.CarId;
+                    var car = this.db.Cars.SingleOrDefaultAsync(c => c.Id == carId).Result;
+                    var agency = this.db.Agencies.SingleOrDefaultAsync(a => a.Id == car.AgencyId).Result;
+                    var carImage = this.db.Images.SingleOrDefaultAsync(i => i.CarId == carId).Result;
+                    var agencyLogo = this.db.Images.SingleOrDefaultAsync(i => i.AgencyId == agency.Id).Result;
+                    item.Image = carImage;
+                    item.AgencyLogo = agencyLogo;
+                }
+            }
+            return result;
+        }
+
+        public async Task<BookingDetailsModel> FindLastBooking(string id)
+        {
+            var result = await this.db.RentalOrders
+             .Where(u => u.UserId == id)
+             .OrderByDescending(o => o.Id)
+             .ProjectTo<BookingDetailsModel>()
+             .FirstOrDefaultAsync();
+
+            if (result != null)
+            {
+                var carId = result.CarId;
+                var agencyId = result.Car.AgencyId;
+
+                var image = this.db.Images.SingleOrDefaultAsync(i => i.CarId == carId).Result;
+                var logo = this.db.Images.SingleOrDefaultAsync(i => i.AgencyId == agencyId).Result;
+
+                result.Image = image;
+                result.AgencyLogo = logo;
+            }
+
+            return result;
+        }
 
         public Task<int> TotalBookingAsync(string id)
         => this.db.RentalOrders.Where(u => u.UserId == id).CountAsync();
