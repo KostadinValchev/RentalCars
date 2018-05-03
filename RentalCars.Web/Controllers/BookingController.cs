@@ -74,7 +74,7 @@
         [Authorize]
         public async Task<IActionResult> BookingDetails(int id)
         {
-            var bookingModel = await this.booking.Details(id);
+            var bookingModel = await this.booking.DetailsAsync(id);
 
             return View(bookingModel);
         }
@@ -83,7 +83,7 @@
         public async Task<IActionResult> UserLastBooking()
         {
             var userId = this.userManager.GetUserId(User);
-            var bookingModel = await this.booking.FindLastBooking(userId);
+            var bookingModel = await this.booking.FindLastBookingAsync(userId);
 
             return View(bookingModel);
         }

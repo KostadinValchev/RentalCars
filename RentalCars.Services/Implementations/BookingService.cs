@@ -53,7 +53,7 @@
             }
         }
 
-        public async Task<BookingDetailsModel> Details(int id)
+        public async Task<BookingDetailsModel> DetailsAsync(int id)
         {
           var result =  await this.db.RentalOrders
             .Where(u => u.Id == id)
@@ -74,7 +74,7 @@
 
             return result;
         }
-        public async Task<IEnumerable<BookingDetailsModel>> FindAllBookings(string id, int page = 1)
+        public async Task<IEnumerable<BookingDetailsModel>> FindAllBookingsAsync(string id, int page = 1)
         {
             var result = await this.db.RentalOrders
                .Where(u => u.UserId == id)
@@ -100,7 +100,7 @@
             return result;
         }
 
-        public async Task<BookingDetailsModel> FindLastBooking(string id)
+        public async Task<BookingDetailsModel> FindLastBookingAsync(string id)
         {
             var result = await this.db.RentalOrders
              .Where(u => u.UserId == id)
